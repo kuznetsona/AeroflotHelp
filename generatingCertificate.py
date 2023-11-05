@@ -3,8 +3,6 @@ from PyQt5 import QtWidgets
 from openpyxl import load_workbook
 from ui_generatingCertificate_v2 import Ui_MainWindow
 
-
-
 class CertificateApp(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
@@ -14,33 +12,33 @@ class CertificateApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.PreviewButton.clicked.connect(self.printCertificate)
 
     def printCertificate(self):
-        # Открываем существующий файл Excel
+        # Загружаем книгу Excel и активный лист
         workbook = load_workbook('database.xlsx')
         sheet = workbook.active
 
-        # Определяем номер следующей строки для записи данных
-        next_row = sheet.max_row + 1
-
-        # Считываем данные с формы
+        # Словарь заголовков и соответствующих значений для записи
         data = {
-            'Вид справки': self.TypeCertificate.currentText(),
-            'Номер билета': self.NumberTicket.text(),
-            'Маршрут следования': self.Itinerary.text(),
-            'Фамилия': self.LastNameLineEdit.text(),
-            'Имя': self.NameLineEdit.text(),
-            'Отчество': self.SurnameLineEdit.text(),
-            'Паспорт': self.PassportLineEdit.text(),
-            'Выдающий орган': self.PassportInformation.text(),
-            'Телефон': self.Telephone.text(),
-            'Почта': self.Email.text(),
-            'ФИО получателя': self.nameRecipient.text(),
+            'TypeCertificate': self.TypeCertificate.currentText(),
+            'NumberTicket': self.NumberTicket.text(),
+            'Itinerary': self.Itinerary.text(),
+            'LastName': self.LastNameLineEdit.text(),
+            'Name': self.NameLineEdit.text(),
+            'Surname': self.SurnameLineEdit.text(),
+            'Passport': self.PassportLineEdit.text(),
+            'IssuingAuthority': self.PassportInformation.text(),
+            'Telephone': self.Telephone.text(),
+            'Email': self.Email.text(),
+            'RecipientName': self.nameRecipient.text(),
         }
 
-        # Записываем данные в новую строку
-        for column, value in enumerate(data.values(), start=1):
-            sheet.cell(row=next_row, column=column).value = value
+        # Сопоставляем колонки Excel и данные с формы
+        headers = [cell.value for cell in sheet[1]]  # Предполагаем, что заголовки находятся в первой строке
+        next_row = sheet.max_row + 1
+        for header in headers:
+            col = headers.index(header) + 1  # Получаем индекс заголовка для определения номера столбца
+            sheet.cell(row=next_row, column=col, value=data[header])
 
-        # Сохраняем изменения в файл Excel
+        # Сохраняем изменения
         workbook.save('database.xlsx')
         QtWidgets.QMessageBox.information(self, 'Успех', 'Данные добавлены в файл database.xlsx')
 
