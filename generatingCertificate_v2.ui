@@ -135,7 +135,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="NumberTicket"/>
+              <widget class="QLineEdit" name="ticketLineEdit"/>
              </item>
             </layout>
            </widget>
@@ -234,7 +234,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="LastNameLineEdit"/>
+              <widget class="QLineEdit" name="lastNameLineEdit"/>
              </item>
             </layout>
            </widget>
@@ -271,7 +271,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="NameLineEdit"/>
+              <widget class="QLineEdit" name="nameLineEdit"/>
              </item>
             </layout>
            </widget>
@@ -308,7 +308,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="SurnameLineEdit"/>
+              <widget class="QLineEdit" name="surnameLineEdit"/>
              </item>
             </layout>
            </widget>
@@ -357,7 +357,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="PassportLineEdit"/>
+              <widget class="QLineEdit" name="passportLineEdit"/>
              </item>
             </layout>
            </widget>
@@ -443,7 +443,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="Telephone"/>
+              <widget class="QLineEdit" name="telephoneLineEdit"/>
              </item>
             </layout>
            </widget>
@@ -480,7 +480,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="Email"/>
+              <widget class="QLineEdit" name="emailLineEdit"/>
              </item>
             </layout>
            </widget>
@@ -537,7 +537,7 @@
           <item>
            <widget class="QPushButton" name="PreviewButton">
             <property name="text">
-             <string>Предпросмотр</string>
+             <string>Сформировать</string>
             </property>
            </widget>
           </item>
